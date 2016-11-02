@@ -1,0 +1,17 @@
+<h1 align="center"><%= "Category: " + @category.name %></h1>
+
+<div align="center">
+	<% if logged_in? and current_user.admin? %>
+	<div class="row">
+		<%= link_to "Edit Category", edit_category_path(@category), class: 'btn btn-xs btn-success' %>
+		<%= link_to "Delete Category", category_path(@category), method: :delete, data: {confirm: 'Are you sure?'}, class: 'btn btn-xs btn-danger' %>
+	</div>
+	<% end %>
+	<%= will_paginate @category_articles %>
+</div>
+
+<%= render 'articles/article', obj: @category_articles %>
+
+<div align="center">
+	<%= will_paginate @category_articles %>
+</div>
